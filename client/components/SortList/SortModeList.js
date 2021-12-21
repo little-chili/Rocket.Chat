@@ -15,8 +15,7 @@ function SortModeList() {
 	const saveUserPreferences = useMethod('saveUserPreferences');
 	const sidebarSortBy = useUserPreference('sidebarSortby', 'activity');
 
-	const useHandleChange = (value) =>
-		useCallback(() => saveUserPreferences({ sidebarSortby: value }), [value]);
+	const useHandleChange = (value) => useCallback(() => saveUserPreferences({ sidebarSortby: value }), [value]);
 
 	const setToAlphabetical = useHandleChange('alphabetical');
 	const setToActivity = useHandleChange('activity');
@@ -33,24 +32,12 @@ function SortModeList() {
 					<SortListItem
 						icon={'clock'}
 						text={t('Activity')}
-						input={
-							<RadioButton
-								name='sidebarSortby'
-								onChange={setToActivity}
-								checked={sidebarSortBy === 'activity'}
-							/>
-						}
+						input={<RadioButton name='sidebarSortby' onChange={setToActivity} checked={sidebarSortBy === 'activity'} />}
 					/>
 					<SortListItem
 						icon={'sort-az'}
 						text={t('Name')}
-						input={
-							<RadioButton
-								name='sidebarSortby'
-								onChange={setToAlphabetical}
-								checked={sidebarSortBy === 'alphabetical'}
-							/>
-						}
+						input={<RadioButton name='sidebarSortby' onChange={setToAlphabetical} checked={sidebarSortBy === 'alphabetical'} />}
 					/>
 				</Margins>
 			</ul>

@@ -29,8 +29,7 @@ function ChatInfo({ id, route }) {
 	const t = useTranslation();
 
 	const formatDateAndTime = useFormatDateAndTime();
-	const { value: allCustomFields, phase: stateCustomFields } =
-		useEndpointData('livechat/custom-fields');
+	const { value: allCustomFields, phase: stateCustomFields } = useEndpointData('livechat/custom-fields');
 	const [customFields, setCustomFields] = useState([]);
 	const formatDuration = useFormatDuration();
 
@@ -78,8 +77,7 @@ function ChatInfo({ id, route }) {
 	};
 
 	const onEditClick = useMutableCallback(() => {
-		const hasEditAccess =
-			!!subscription || hasLocalEditRoomPermission || hasGlobalEditRoomPermission;
+		const hasEditAccess = !!subscription || hasLocalEditRoomPermission || hasGlobalEditRoomPermission;
 		if (!hasEditAccess) {
 			return dispatchToastMessage({ type: 'error', message: t('Not_authorized') });
 		}
@@ -177,9 +175,7 @@ function ChatInfo({ id, route }) {
 					{canViewCustomFields() &&
 						livechatData &&
 						Object.keys(livechatData).map(
-							(key) =>
-								checkIsVisibleAndScopeRoom(key) &&
-								livechatData[key] && <CustomField key={key} id={key} value={livechatData[key]} />,
+							(key) => checkIsVisibleAndScopeRoom(key) && livechatData[key] && <CustomField key={key} id={key} value={livechatData[key]} />,
 						)}
 					{priorityId && <PriorityField id={priorityId} />}
 				</Margins>

@@ -29,16 +29,7 @@ const Action: FC<ActionOptions> = ({ id, icon, i18nLabel, label, mid, runAction,
 	const resolvedIcon = resolveLegacyIcon(icon);
 
 	return (
-		<Button
-			id={id}
-			data-mid={mid}
-			data-actionlink={id}
-			onClick={runAction}
-			marginInline='x4'
-			primary
-			small
-			danger={danger}
-		>
+		<Button id={id} data-mid={mid} data-actionlink={id} onClick={runAction} marginInline='x4' primary small danger={danger}>
 			{icon && <Icon name={resolvedIcon} />}
 			{i18nLabel ? t(i18nLabel) : label}
 		</Button>

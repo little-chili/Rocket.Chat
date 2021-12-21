@@ -69,14 +69,7 @@ export const useDepartmentsList = (
 				itemCount: options.departmentId ? total - 1 : total,
 			};
 		},
-		[
-			getDepartments,
-			options.departmentId,
-			options.filter,
-			options.haveAll,
-			options.onlyMyDepartments,
-			t,
-		],
+		[getDepartments, options.departmentId, options.filter, options.haveAll, options.onlyMyDepartments, t],
 	);
 
 	const { loadMoreItems, initialItemCount } = useScrollableRecordList(itemsList, fetchData, 25);

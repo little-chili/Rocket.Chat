@@ -16,11 +16,7 @@ export class WebdavAccountsRaw extends BaseRaw<T> {
 		this.col.createIndex({ user_id: 1 });
 	}
 
-	findOneByIdAndUserId(
-		_id: string,
-		user_id: string,
-		options: FindOneOptions<T>,
-	): Promise<T | null> {
+	findOneByIdAndUserId(_id: string, user_id: string, options: FindOneOptions<T>): Promise<T | null> {
 		return this.findOne({ _id, user_id }, options);
 	}
 

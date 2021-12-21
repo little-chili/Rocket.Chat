@@ -6,8 +6,7 @@ import { t } from '../../../utils/client';
 import { triggerActionButtonAction } from '../ActionManager';
 import { applyButtonFilters } from './lib/applyButtonFilters';
 
-const getIdForActionButton = ({ appId, actionId }: IUIActionButton): string =>
-	`${appId}/${actionId}`;
+const getIdForActionButton = ({ appId, actionId }: IUIActionButton): string => `${appId}/${actionId}`;
 
 export const onAdded = (button: IUIActionButton): void =>
 	// eslint-disable-next-line no-void
@@ -31,5 +30,4 @@ export const onAdded = (button: IUIActionButton): void =>
 			: null,
 	);
 
-export const onRemoved = (button: IUIActionButton): boolean =>
-	deleteAction(getIdForActionButton(button));
+export const onRemoved = (button: IUIActionButton): boolean => deleteAction(getIdForActionButton(button));

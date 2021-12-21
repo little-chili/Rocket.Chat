@@ -72,8 +72,7 @@ function TeamsInfoWithLogic({ room, openEditing }) {
 
 	const onClickDelete = useMutableCallback(() => {
 		const onConfirm = async (deletedRooms) => {
-			const roomsToRemove =
-				Array.isArray(deletedRooms) && deletedRooms.length > 0 ? deletedRooms : null;
+			const roomsToRemove = Array.isArray(deletedRooms) && deletedRooms.length > 0 ? deletedRooms : null;
 			try {
 				await deleteTeam({ teamId: room.teamId, roomsToRemove });
 				router.push({});
@@ -157,13 +156,7 @@ function TeamsInfoWithLogic({ room, openEditing }) {
 		};
 
 		setModal(
-			<ConvertToChannelModal
-				onClose={closeModal}
-				onCancel={closeModal}
-				onConfirm={onConfirm}
-				teamId={room.teamId}
-				userId={userId}
-			/>,
+			<ConvertToChannelModal onClose={closeModal} onCancel={closeModal} onConfirm={onConfirm} teamId={room.teamId} userId={userId} />,
 		);
 	});
 
@@ -181,9 +174,7 @@ function TeamsInfoWithLogic({ room, openEditing }) {
 			onClickHide={/* joined && */ handleHide}
 			onClickViewChannels={onClickViewChannels}
 			onClickConvertToChannel={canEdit && onClickConvertToChannel}
-			announcement={
-				room.announcement && <MarkdownText variant='inline' content={room.announcement} />
-			}
+			announcement={room.announcement && <MarkdownText variant='inline' content={room.announcement} />}
 			description={room.description && <MarkdownText variant='inline' content={room.description} />}
 			topic={room.topic && <MarkdownText variant='inline' content={room.topic} />}
 		/>

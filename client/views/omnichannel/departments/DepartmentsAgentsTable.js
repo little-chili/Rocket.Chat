@@ -38,15 +38,7 @@ function DepartmentsAgentsTable({ agents, setAgentListFinal }) {
 				total={agentList?.length}
 				pi='x24'
 			>
-				{(props) => (
-					<AgentRow
-						key={props._id}
-						mediaQuery={mediaQuery}
-						agentList={agentList}
-						setAgentList={setAgentList}
-						{...props}
-					/>
-				)}
+				{(props) => <AgentRow key={props._id} mediaQuery={mediaQuery} agentList={agentList} setAgentList={setAgentList} {...props} />}
 			</GenericTable>
 		</>
 	);

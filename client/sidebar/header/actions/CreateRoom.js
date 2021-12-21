@@ -4,13 +4,7 @@ import React from 'react';
 import { popover } from '../../../../app/ui-utils/client';
 import { useAtLeastOnePermission } from '../../../contexts/AuthorizationContext';
 
-const CREATE_ROOM_PERMISSIONS = [
-	'create-c',
-	'create-p',
-	'create-d',
-	'start-discussion',
-	'start-discussion-other-user',
-];
+const CREATE_ROOM_PERMISSIONS = ['create-c', 'create-p', 'create-d', 'start-discussion', 'start-discussion-other-user'];
 
 const config = (e) => ({
 	template: 'CreateRoomList',
@@ -27,9 +21,7 @@ const CreateRoom = (props) => {
 		popover.open(config(e));
 	};
 
-	return showCreate ? (
-		<Sidebar.TopBar.Action {...props} icon='edit-rounded' onClick={onClick} />
-	) : null;
+	return showCreate ? <Sidebar.TopBar.Action {...props} icon='edit-rounded' onClick={onClick} /> : null;
 };
 
 export default CreateRoom;

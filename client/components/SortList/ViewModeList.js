@@ -15,8 +15,7 @@ function ViewModeList() {
 
 	const saveUserPreferences = useMethod('saveUserPreferences');
 
-	const useHandleChange = (value) =>
-		useCallback(() => saveUserPreferences({ sidebarViewMode: value }), [value]);
+	const useHandleChange = (value) => useCallback(() => saveUserPreferences({ sidebarViewMode: value }), [value]);
 
 	const sidebarViewMode = useUserPreference('sidebarViewMode', 'extended');
 	const sidebarDisplayAvatar = useUserPreference('sidebarDisplayAvatar', false);
@@ -43,48 +42,25 @@ function ViewModeList() {
 						icon={'extended-view'}
 						text={t('Extended')}
 						input={
-							<RadioButton
-								onChange={setToExtended}
-								name='sidebarViewMode'
-								value='extended'
-								checked={sidebarViewMode === 'extended'}
-							/>
+							<RadioButton onChange={setToExtended} name='sidebarViewMode' value='extended' checked={sidebarViewMode === 'extended'} />
 						}
 					/>
 					<SortListItem
 						icon={'medium-view'}
 						text={t('Medium')}
-						input={
-							<RadioButton
-								onChange={setToMedium}
-								name='sidebarViewMode'
-								value='medium'
-								checked={sidebarViewMode === 'medium'}
-							/>
-						}
+						input={<RadioButton onChange={setToMedium} name='sidebarViewMode' value='medium' checked={sidebarViewMode === 'medium'} />}
 					/>
 					<SortListItem
 						icon={'condensed-view'}
 						text={t('Condensed')}
 						input={
-							<RadioButton
-								onChange={setToCondensed}
-								name='sidebarViewMode'
-								value='condensed'
-								checked={sidebarViewMode === 'condensed'}
-							/>
+							<RadioButton onChange={setToCondensed} name='sidebarViewMode' value='condensed' checked={sidebarViewMode === 'condensed'} />
 						}
 					/>
 					<SortListItem
 						icon={'user-rounded'}
 						text={t('Avatars')}
-						input={
-							<ToggleSwitch
-								onChange={handleChangeSidebarDisplayAvatar}
-								name='sidebarDisplayAvatar'
-								checked={sidebarDisplayAvatar}
-							/>
-						}
+						input={<ToggleSwitch onChange={handleChangeSidebarDisplayAvatar} name='sidebarDisplayAvatar' checked={sidebarDisplayAvatar} />}
 					/>
 				</Margins>
 			</ul>

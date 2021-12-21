@@ -26,8 +26,7 @@ settings.watch<string>('Language', (value) => {
 export const replacekey = (str: string, key: string, value = ''): string =>
 	str.replace(new RegExp(`(\\[${key}\\]|__${key}__)`, 'igm'), value);
 
-export const translate = (str: string): string =>
-	replaceVariables(str, (_match, key) => TAPi18n.__(key, { lng }));
+export const translate = (str: string): string => replaceVariables(str, (_match, key) => TAPi18n.__(key, { lng }));
 
 export const replace = (str: string, data: { [key: string]: unknown } = {}): string => {
 	if (!str) {
@@ -50,10 +49,7 @@ export const replace = (str: string, data: { [key: string]: unknown } = {}): str
 		...data,
 	};
 
-	return Object.entries(options).reduce(
-		(ret, [key, value]) => replacekey(ret, key, value),
-		translate(str),
-	);
+	return Object.entries(options).reduce((ret, [key, value]) => replacekey(ret, key, value), translate(str));
 };
 
 const nonEscapeKeys = ['room_path'];
@@ -92,11 +88,7 @@ export const inlinecss = (html: string): string => {
 	return css ? juice.inlineContent(html, css) : html;
 };
 
-export const getTemplate = (
-	template: ISetting['_id'],
-	fn: (html: string) => void,
-	escape = true,
-): void => {
+export const getTemplate = (template: ISetting['_id'], fn: (html: string) => void, escape = true): void => {
 	let html = '';
 
 	settings.watch<string>(template, (value) => {
@@ -203,8 +195,7 @@ export const send = ({
 		from,
 		replyTo,
 		subject: replace(subject, data),
-		text:
-			(text && replace(text, data)) || (html && stripHtml(replace(html, data)).result) || undefined,
+		text: (text && replace(text, data)) || (html && stripHtml(replace(html, data)).result) || undefined,
 		html: html ? wrap(html, data) : undefined,
 		headers,
 	});

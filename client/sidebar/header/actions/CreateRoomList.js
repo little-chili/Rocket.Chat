@@ -62,23 +62,11 @@ function CreateRoomList() {
 			</Margins>
 			<ul className='rc-popover__list'>
 				<Margins block='x8'>
-					{canCreateChannel && (
-						<CreateRoomListItem icon='hashtag' text={t('Channel')} action={createChannel} />
-					)}
+					{canCreateChannel && <CreateRoomListItem icon='hashtag' text={t('Channel')} action={createChannel} />}
 					{canCreateTeam && <CreateRoomListItem icon='team' text={t('Team')} action={createTeam} />}
-					{canCreateDirectMessages && (
-						<CreateRoomListItem
-							icon='balloon'
-							text={t('Direct_Messages')}
-							action={createDirectMessage}
-						/>
-					)}
+					{canCreateDirectMessages && <CreateRoomListItem icon='balloon' text={t('Direct_Messages')} action={createDirectMessage} />}
 					{discussionEnabled && canCreateDiscussion && (
-						<CreateRoomListItem
-							icon='discussion'
-							text={t('Discussion')}
-							action={createDiscussion}
-						/>
+						<CreateRoomListItem icon='discussion' text={t('Discussion')} action={createDiscussion} />
 					)}
 				</Margins>
 			</ul>

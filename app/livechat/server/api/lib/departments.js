@@ -4,17 +4,8 @@ import { hasPermissionAsync } from '../../../../authorization/server/functions/h
 import { LivechatDepartment, LivechatDepartmentAgents } from '../../../../models/server/raw';
 import { callbacks } from '../../../../callbacks/server';
 
-export async function findDepartments({
-	userId,
-	onlyMyDepartments = false,
-	text,
-	enabled,
-	pagination: { offset, count, sort },
-}) {
-	if (
-		!(await hasPermissionAsync(userId, 'view-livechat-departments')) &&
-		!(await hasPermissionAsync(userId, 'view-l-room'))
-	) {
+export async function findDepartments({ userId, onlyMyDepartments = false, text, enabled, pagination: { offset, count, sort } }) {
+	if (!(await hasPermissionAsync(userId, 'view-livechat-departments')) && !(await hasPermissionAsync(userId, 'view-l-room'))) {
 		throw new Error('error-not-authorized');
 	}
 
@@ -46,12 +37,7 @@ export async function findDepartments({
 	};
 }
 
-export async function findDepartmentById({
-	userId,
-	departmentId,
-	includeAgents = true,
-	onlyMyDepartments = false,
-}) {
+export async function findDepartmentById({ userId, departmentId, includeAgents = true, onlyMyDepartments = false }) {
 	const canViewLivechatDepartments = await hasPermissionAsync(userId, 'view-livechat-departments');
 	if (!canViewLivechatDepartments && !(await hasPermissionAsync(userId, 'view-l-room'))) {
 		throw new Error('error-not-authorized');
@@ -74,10 +60,7 @@ export async function findDepartmentById({
 }
 
 export async function findDepartmentsToAutocomplete({ uid, selector, onlyMyDepartments = false }) {
-	if (
-		!(await hasPermissionAsync(uid, 'view-livechat-departments')) &&
-		!(await hasPermissionAsync(uid, 'view-l-room'))
-	) {
+	if (!(await hasPermissionAsync(uid, 'view-livechat-departments')) && !(await hasPermissionAsync(uid, 'view-l-room'))) {
 		return { items: [] };
 	}
 	const { exceptions = [] } = selector;
@@ -108,15 +91,8 @@ export async function findDepartmentsToAutocomplete({ uid, selector, onlyMyDepar
 	};
 }
 
-export async function findDepartmentAgents({
-	userId,
-	departmentId,
-	pagination: { offset, count, sort },
-}) {
-	if (
-		!(await hasPermissionAsync(userId, 'view-livechat-departments')) &&
-		!(await hasPermissionAsync(userId, 'view-l-room'))
-	) {
+export async function findDepartmentAgents({ userId, departmentId, pagination: { offset, count, sort } }) {
+	if (!(await hasPermissionAsync(userId, 'view-livechat-departments')) && !(await hasPermissionAsync(userId, 'view-l-room'))) {
 		throw new Error('error-not-authorized');
 	}
 
@@ -139,10 +115,7 @@ export async function findDepartmentAgents({
 }
 
 export async function findDepartmentsBetweenIds({ uid, ids, fields }) {
-	if (
-		!(await hasPermissionAsync(uid, 'view-livechat-departments')) &&
-		!(await hasPermissionAsync(uid, 'view-l-room'))
-	) {
+	if (!(await hasPermissionAsync(uid, 'view-livechat-departments')) && !(await hasPermissionAsync(uid, 'view-l-room'))) {
 		throw new Error('error-not-authorized');
 	}
 

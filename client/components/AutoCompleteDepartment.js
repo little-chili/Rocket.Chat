@@ -22,11 +22,7 @@ const AutoCompleteDepartment = (props) => {
 		),
 	);
 
-	const {
-		phase: departmentsPhase,
-		items: departmentsItems,
-		itemCount: departmentsTotal,
-	} = useRecordList(departmentsList);
+	const { phase: departmentsPhase, items: departmentsItems, itemCount: departmentsTotal } = useRecordList(departmentsList);
 
 	const sortedByName = departmentsItems.sort((a, b) => {
 		if (a.value.value === 'all') {
@@ -58,9 +54,7 @@ const AutoCompleteDepartment = (props) => {
 			options={sortedByName}
 			placeholder={t('Select_an_option')}
 			endReached={
-				departmentsPhase === AsyncStatePhase.LOADING
-					? () => {}
-					: (start) => loadMoreDepartments(start, Math.min(50, departmentsTotal))
+				departmentsPhase === AsyncStatePhase.LOADING ? () => {} : (start) => loadMoreDepartments(start, Math.min(50, departmentsTotal))
 			}
 		/>
 	);

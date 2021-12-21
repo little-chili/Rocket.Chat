@@ -10,12 +10,7 @@ const AgentRow = ({ agentId, username, name, avatarETag, mediaQuery, agentList, 
 	<Table.Row key={agentId} tabIndex={0} role='link' action qa-user-id={agentId}>
 		<Table.Cell withTruncatedText>
 			<Box display='flex' alignItems='center'>
-				<UserAvatar
-					size={mediaQuery ? 'x28' : 'x40'}
-					title={username}
-					username={username}
-					etag={avatarETag}
-				/>
+				<UserAvatar size={mediaQuery ? 'x28' : 'x40'} title={username} username={username} etag={avatarETag} />
 				<Box display='flex' withTruncatedText mi='x8'>
 					<Box display='flex' flexDirection='column' alignSelf='center' withTruncatedText>
 						<Box fontScale='p4' withTruncatedText color='default'>

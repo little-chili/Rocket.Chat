@@ -40,11 +40,9 @@ const ADMIN_PERMISSIONS = [
 	'view-engagement-dashboard',
 ];
 
-const isDefaultStatus = (id: string): boolean =>
-	(Object.values(UserStatusEnum) as string[]).includes(id);
+const isDefaultStatus = (id: string): boolean => (Object.values(UserStatusEnum) as string[]).includes(id);
 
-const isDefaultStatusName = (_name: string, id: string): _name is UserStatusEnum =>
-	isDefaultStatus(id);
+const isDefaultStatusName = (_name: string, id: string): _name is UserStatusEnum => isDefaultStatus(id);
 
 const setStatus = (status: typeof userStatus.list['']): void => {
 	AccountBox.setStatus(status.statusType, !isDefaultStatus(status.id) ? status.name : '');
@@ -53,10 +51,7 @@ const setStatus = (status: typeof userStatus.list['']): void => {
 
 const getItems = (): ReturnType<typeof AccountBox.getItems> => AccountBox.getItems();
 
-const translateStatusName = (
-	t: ReturnType<typeof useTranslation>,
-	status: typeof userStatus.list[''],
-): string => {
+const translateStatusName = (t: ReturnType<typeof useTranslation>, status: typeof userStatus.list['']): string => {
 	if (isDefaultStatusName(status.name, status.id)) {
 		return t(status.name);
 	}
@@ -139,11 +134,7 @@ const UserDropdown = ({ user, onClose }: UserDropdownProps): ReactElement => {
 						</Margins>
 					</Box>
 					<Box color='hint'>
-						<MarkdownText
-							withTruncatedText
-							content={statusText || t(status || 'offline')}
-							variant='inlineWithoutBreaks'
-						/>
+						<MarkdownText withTruncatedText content={statusText || t(status || 'offline')} variant='inlineWithoutBreaks' />
 					</Box>
 				</Box>
 			</Box>
@@ -174,20 +165,14 @@ const UserDropdown = ({ user, onClose }: UserDropdownProps): ReactElement => {
 							</Option>
 						);
 					})}
-				<Option
-					icon='emoji'
-					label={`${t('Custom_Status')}...`}
-					onClick={handleCustomStatus}
-				></Option>
+				<Option icon='emoji' label={`${t('Custom_Status')}...`} onClick={handleCustomStatus}></Option>
 			</Box>
 
 			{(accountBoxItems.length || showAdmin) && (
 				<>
 					<Divider mi='neg-x16' mb='x16' />
 					<Box mi='neg-x16'>
-						{showAdmin && (
-							<Option icon={'customize'} label={t('Administration')} onClick={handleAdmin}></Option>
-						)}
+						{showAdmin && <Option icon={'customize'} label={t('Administration')} onClick={handleAdmin}></Option>}
 						{accountBoxItems.map((item, i) => {
 							let action;
 
@@ -205,9 +190,7 @@ const UserDropdown = ({ user, onClose }: UserDropdownProps): ReactElement => {
 								};
 							}
 
-							return (
-								<Option icon={item.icon} label={t(item.name)} onClick={action} key={i}></Option>
-							);
+							return <Option icon={item.icon} label={t(item.name)} onClick={action} key={i}></Option>;
 						})}
 					</Box>
 				</>

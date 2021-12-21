@@ -30,9 +30,7 @@ const UserAvatarButton = ({ user = {} }) => {
 
 	const onClose = useMutableCallback(() => popover.close());
 
-	const handleClick = useMutableCallback(
-		(e) => uid && openDropdown(e, user, onClose, allowAnonymousRead),
-	);
+	const handleClick = useMutableCallback((e) => uid && openDropdown(e, user, onClose, allowAnonymousRead));
 
 	return (
 		<Box
